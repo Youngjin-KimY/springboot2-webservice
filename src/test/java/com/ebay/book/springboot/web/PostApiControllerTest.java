@@ -4,10 +4,8 @@ import com.ebay.book.springboot.domain.posts.Posts;
 import com.ebay.book.springboot.domain.posts.PostsRepository;
 import com.ebay.book.springboot.web.dto.PostsSaveRequestDto;
 import com.ebay.book.springboot.web.dto.PostsUpdateRequestDto;
-import org.graalvm.compiler.java.BciBlockMapping;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -16,14 +14,17 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Rollback()
+@ActiveProfiles("test")
 public class PostApiControllerTest {
 
     @LocalServerPort
@@ -34,11 +35,6 @@ public class PostApiControllerTest {
 
     @Autowired
     private PostsRepository postsRepository;
-
-    @After
-    public void tearDown() throws Exception {
-        postsRepository.deleteAll();
-    }
 
     @Test
     public void Posts_등록되다() throws Exception{

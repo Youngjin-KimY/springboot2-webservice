@@ -1,9 +1,15 @@
 package com.ebay.book.springboot.web.dto;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest
+@Rollback
+@ActiveProfiles("test")
 public class HelloResponseDtoTest {
 
     @Test
