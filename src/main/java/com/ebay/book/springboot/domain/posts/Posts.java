@@ -1,13 +1,21 @@
 package com.ebay.book.springboot.domain.posts;
 
+import com.ebay.book.springboot.web.dto.PostsUpdateRequestDto;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Getter
+@NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,70 +29,21 @@ public class Posts {
 
     private String author;
 
-    public Posts(){
-
-    }
-    public Posts(builder builder) {
-        this.title = builder.title;
-        this.content = builder.content;
-        this.author = builder.author;
-    }
-    public Long getId(){return id;}
-
-    public String getTitle() {
-        return title;
-    }
-
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void update(String title,String content){
+    @Builder
+    public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
+        this.author = author;
     }
 
-    public static class builder {
-        private String title;
-        private String content;
-        private String author;
-        public builder(){
+    public Posts(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
 
-        }
-
-        public builder title(String title){
-            this.title = title;
-            return this;
-        }
-
-        public builder content(String content){
-            this.content = content;
-            return this;
-        }
-
-        public builder author(String author){
-            this.author = author;
-            return this;
-        }
-
-        public Posts build(){
-            Posts posts = new Posts(this);
-
-            if(isValid(posts)){
-                return posts;
-            }
-
-            throw new IllegalArgumentException("Invalid data provided");
-        }
-
-        private boolean isValid(Posts post){
-            return true;
-        }
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
 

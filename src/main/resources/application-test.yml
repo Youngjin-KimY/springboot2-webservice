@@ -1,17 +1,18 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/test
+    url: jdbc:h2:tcp://localhost/~/test;MODE=MariaDB;DATABASE_TO_LOWER=TRUE
     username: sa
     password:
     driver-class-name: org.h2.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       #      generate-ddl: false
       hibernate:
         format_sql: true
+        dialect : org.hibernate.dialect.H2Dialect
 
 logging.level:
   org.hibernate.SQL: debug

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+    {{>layout/header}}
+
+    <h1>Posting</h1>
+    <div class = "col-md-12" style="margin-left: 10px;">
+        <div class="row">
+            <div class = "col-md-6">
+                <a href = "/posts/save" role="button" class="btn btn-primary">
+                    post article
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!--    list-->
+    <table class="table table-horizontal table-bordered" style="margin-left: 10px;">
+        <thead class="thread-strong">
+            <tr>
+                <th>No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>last modified time</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#posts}}
+            <tr>
+                <td>{{id}}</td>
+                <td><a href="/posts/update/{{id}}">{{title}}</td>
+                <td>{{author}}</td>
+                <td>{{modifiedDate}}</td>
+            </tr>
+        {{/posts}}
+        </tbody>
+    </table>
+
+
+
+    {{>layout/footer}}
+</html>

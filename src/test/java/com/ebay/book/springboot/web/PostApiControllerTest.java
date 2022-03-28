@@ -40,7 +40,7 @@ public class PostApiControllerTest {
     public void Posts_등록되다() throws Exception{
         String title = "title";
         String content = "content";
-        PostsSaveRequestDto requestDto = new PostsSaveRequestDto.builder()
+        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .title(title)
                 .content(content)
                 .author("author")
@@ -61,7 +61,7 @@ public class PostApiControllerTest {
 
     @Test
     public void Posts_수정되다() throws Exception {
-        Posts savedPosts = postsRepository.save(new Posts.builder()
+        Posts savedPosts = postsRepository.save(Posts.builder()
                 .title("title")
                 .content("content")
                 .author("author")
