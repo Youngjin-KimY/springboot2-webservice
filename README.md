@@ -16,3 +16,5 @@ and also some of points are different.
          1. prd : mariadb
          2. test : h2
 4. application.properties -> application.yml
+5. Oauth
+      1. ref : https://deeplify.dev/back-end/spring/oauth2-social-login

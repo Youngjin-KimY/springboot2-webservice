@@ -1,5 +1,6 @@
 package com.ebay.book.springboot.web;
 
+import com.ebay.book.springboot.domain.user.Role;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -39,5 +40,10 @@ public class HelloControllerTest {
                 .andExpect(jsonPath("$.name",is(name)))
                 .andExpect(jsonPath("$.amount",is(amount)));
 
+    }
+
+    @Test
+    public void test() {
+        System.out.println(Role.USER.name());
     }
 }
