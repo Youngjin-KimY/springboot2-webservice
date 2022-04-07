@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost:8082/~/test;MODE=MariaDB;DATABASE_TO_LOWER=TRUE
+    url: jdbc:h2:tcp://localhost/~/test;MODE=MariaDB;DATABASE_TO_LOWER=TRUE
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -13,6 +13,18 @@ spring:
       hibernate:
         format_sql: true
         dialect : org.hibernate.dialect.H2Dialect
+
+  #OAuth
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: test
+            clientSecret: test
+            scope:
+              - profile
+              - email
 
 logging.level:
   org.hibernate.SQL: debug
