@@ -3,3 +3,4 @@
 .idea
 build/*
 spy.log
+src/main/resources/application-real-db.yml
